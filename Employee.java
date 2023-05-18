@@ -59,8 +59,6 @@ public class Employee {
     }
 
     // Overriding in-built object method to display object attributes instead of hashcode
-
-
     @Override
     public String toString() {
         return "Employee{" +

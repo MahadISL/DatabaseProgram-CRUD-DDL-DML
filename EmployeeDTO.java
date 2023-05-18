@@ -11,8 +11,8 @@ public class EmployeeDTO {
 
         String query = "DELETE FROM employee1 " + "WHERE employeeId = " + employeeID;
 
+        // Connection to DB and Query executed
         Connection con = db.getConnection();
-
         Statement st = con.createStatement();
         st.executeUpdate(query);
 
@@ -23,11 +23,12 @@ public class EmployeeDTO {
     public void getById(int employeeID) throws SQLException {
         String query = "SELECT * FROM employee1 " + "WHERE employeeId = " + employeeID;
 
+        // Connection to DB and Query executed
         Connection con = db.getConnection();
-
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(query);
 
+        // Displaying DB table values
         while(rs.next()) {
             int employeeId = rs.getInt("employeeId");
             String firstName = rs.getString("firstName");
@@ -43,12 +44,12 @@ public class EmployeeDTO {
     public void readAll() throws SQLException {
         String query = "SELECT * FROM employee1";
 
+        // Connection to DB and executing query
         Connection con = db.getConnection();
-        //System.out.println(con.hashCode());
-
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(query);
 
+        // Displaying table values
         while(rs.next()) {
             int employeeId = rs.getInt("employeeId");
             String firstName = rs.getString("firstName");
@@ -62,12 +63,11 @@ public class EmployeeDTO {
 
     public void save(Employee emp) throws SQLException, ClassNotFoundException {
 
-        //Statement st = con.createStatement();
+        // Connection to DB
         Connection con = db.getConnection();
         PreparedStatement st = con.prepareStatement("insert into employee1 values(?,?,?,?,?) ");
 
-        //  Loop through Employee Array and insert its values into Database
-
+        // Inserting values to DB
         try {
             st.setInt(1, emp.getEmployeeID());
             st.setString(2, emp.getFirstName());
@@ -85,14 +85,13 @@ public class EmployeeDTO {
 
     public void update(int employeeId, String firstName) throws SQLException {
 
-        Connection con = db.getConnection();
-        System.out.println(con.hashCode());
-
-        Statement st = con.createStatement();
-
         String query = "UPDATE employee1 SET firstName = '" + firstName + "' WHERE employeeId = " + employeeId;
 
+        // Connection to DB and executing Query
+        Connection con = db.getConnection();
+        Statement st = con.createStatement();
         st.executeUpdate(query);
+
         System.out.println("Updated");
 
     }

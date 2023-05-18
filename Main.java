@@ -1,4 +1,3 @@
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -7,39 +6,13 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-//        DBUtils db = new DBUtils();
-//        Connection con = db.getConnection();
-//        Connection con1 = db.getConnection();
-//        Connection con2 = db.getConnection();
-//        System.out.println(con.hashCode());
-//        System.out.println(con1.hashCode());
-//        System.out.println(con2.hashCode());
-
-//        int employeeId = sc.nextInt();
-//        String firstName = sc.next();
-//        String lastName = sc.next();
-//        String occupation = sc.next();
-//        int yearOfJoining = sc.nextInt();
-//        Employee emp = new Employee(employeeId,firstName, lastName, occupation,  yearOfJoining);
-//
-//        empdto.save(emp);
-
-//        String firstName = sc.next();
-//        int employeeId = sc.nextInt();
-//        empdto.update(employeeId, firstName);
-//        empdto.readAll();
-//        System.out.println("Enter Option 6 to exit: ");
-//        int option6 = sc.nextInt();
-//        if (option6 == 6){
-//            DBUtils db = new DBUtils();
-//            db.closeConnection();
-//        }
         System.out.println("Database application with CRUD operations (DDL & DML)");
         System.out.println("Employee Data");
 
         Scanner in = new Scanner(System.in);
         EmployeeDTO empdto = new EmployeeDTO();
 
+        // Input variables
         int optionInput;
         int employeeId;
         String firstName;
@@ -98,9 +71,9 @@ public class Main {
                     empdto.update(employeeId, firstName);
                     break;
                 case 6:
-                    System.out.println("Exiting Application...");
                     DBUtils db = new DBUtils();
                     db.closeConnection();
+                    System.out.println("Exiting Application...");
                     System.exit(0);
 
 
